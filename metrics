@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+import psutil
+import sys
+
+if __name__ == '__main__':
+    if len (sys.argv) == 2:
+        param_name = sys.argv[1]
+        if (param_name == "cpu"):
+            print ("system.cpu.idle ", psutil.cpu_times().idle)
+            print ("system.cpu.user ", psutil.cpu_times().user)
+            print ("system.cpu.guest ", psutil.cpu_times().guest)
+            print ("system.cpu.iowait ", psutil.cpu_times().iowait)
+            print ("system.cpu.stolen ", psutil.cpu_times().steal)
+            print ("system.cpu.system ", psutil.cpu_times().system)
+            #print (psutil.cpu_times() )
+            sys.exit (0)
+        if (param_name == "mem" ):
+            print ("virtual total",psutil.virtual_memory().total)
+            print ("virtual used",psutil.virtual_memory().used)
+            print ("virtual free",psutil.virtual_memory().free)
+            print ("virtual shared",psutil.virtual_memory().shared)
+            print ("swap total",psutil.swap_memory().total)
+            print ("swap used",psutil.swap_memory().used)
+            print ("swap free",psutil.swap_memory().free)
+            #print (psutil.virtual_memory())
+            #print (psutil.swap_memory())
+            sys.exit (0)
+    print ("Usage of script : metrics param \n (where param - cpu or mem)")
